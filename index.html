@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg" href="multimedia/favicon.jpg">
+    <title>Magic Center — Electrodomésticos</title>
+
+    <link rel="stylesheet" href="estilos/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Las 2 tipografías linkeadas: Poppins (display/títulos) + Inter (cuerpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+
+    <link rel="stylesheet" href="estilos/estilos.css">
+</head>
+<body>
+
+    <header>
+        <!-- Logo en <h1> pintado por background-image; el texto queda oculto
+             pero accesible para lectores de pantalla y SEO. -->
+        <h1 class="site-logo">
+            <a href="#inicio">Magic Center</a>
+        </h1>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Mi cuenta: primer ítem en el menú hamburguesa (mobile/tablet). En desktop va en el header. -->
+                        <li class="nav-item d-lg-none">
+                            <a class="nav-link" href="#"><i class="bi bi-person"></i> Mi cuenta</a>
+                        </li>
+                        <!-- Inicio: solo desktop (en mobile el logo ya lleva al inicio y su lugar lo toma Mi cuenta). -->
+                        <li class="nav-item d-none d-lg-block">
+                            <a class="nav-link" href="#inicio"><i class="bi bi-house-door"></i> Inicio</a>
+                        </li>
+                        <!-- Menú desplegable ESTANDARIZADO: mismo patrón para todas las
+                             categorías (resuelve la inconsistencia del análisis). -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#categorias" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-grid"></i> Electrodomésticos</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="secciones/producto.html"><i class="bi bi-snow"></i> Heladeras</a></li>
+                                <li><a class="dropdown-item" href="secciones/proximamente.html"><i class="bi bi-water"></i> Lavarropas</a></li>
+                                <li><a class="dropdown-item" href="secciones/proximamente.html"><i class="bi bi-fire"></i> Cocinas</a></li>
+                                <li><a class="dropdown-item" href="secciones/proximamente.html"><i class="bi bi-tv"></i> TV &amp; Audio</a></li>
+                                <li><a class="dropdown-item" href="secciones/proximamente.html"><i class="bi bi-phone"></i> Celulares</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#destacados" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-tag"></i> Ofertas</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#destacados"><i class="bi bi-tag"></i> Destacados</a></li>
+                                <li><a class="dropdown-item" href="secciones/lavarropas.html"><i class="bi bi-lightning-charge"></i> Liquidación</a></li>
+                                <li><a class="dropdown-item" href="secciones/producto.html"><i class="bi bi-box-seam"></i> Ver producto</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#faq"><i class="bi bi-question-circle"></i> Ayuda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contacto"><i class="bi bi-envelope"></i> Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Acciones de usuario: buscar + cuenta + carrito (derecha del header) -->
+        <ul class="header-acciones list-unstyled">
+            <li class="acc-buscar">
+                <a href="#" aria-label="Buscar productos">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li>
+            <li class="acc-cuenta">
+                <a href="#" aria-label="Mi cuenta">
+                    <i class="bi bi-person"></i><span>Mi cuenta</span>
+                </a>
+            </li>
+            <li class="acc-carrito">
+                <a href="#" aria-label="Carrito de compras">
+                    <i class="bi bi-cart3"></i><span class="cart-total">$ 0,0</span>
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+
+        <!-- Bajada / gancho: tagline amigable arriba del banner -->
+        <div class="bajada">
+            <p>¿Ya pensaste <br class="d-md-none">qué te vas a comprar?</p>
+        </div>
+
+        <!-- 01 INICIO — banner hero con un único foco: producto + precio dominante -->
+        <section id="inicio" class="carousel slide carousel-fade">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#inicio" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Banner deshumidificador"></button>
+                <button type="button" data-bs-target="#inicio" data-bs-slide-to="1" aria-label="Banner Smart TV"></button>
+                <button type="button" data-bs-target="#inicio" data-bs-slide-to="2" aria-label="Banner climatización"></button>
+            </div>
+
+            <ul class="carousel-inner p-0 m-0">
+                <li class="carousel-item active">
+                    <!-- PLACEHOLDER de imagen: reemplazar el div.ph por un <picture> cuando
+                         tengas las fotos. Filenames sugeridos ya definidos en el alt. -->
+                    <img src="multimedia/banner-deshumificador-pc.webp" class="hero-img" alt="Deshumidificador AMOI en un living luminoso">
+                    <div class="carousel-caption">
+                        <p class="hero-kicker">Climatización</p>
+                        <h2 class="hero-title">Deshumidificador TEM 12 litros</h2>
+                        <p class="hero-price">$ 4.790</p>
+                        <a href="secciones/proximamente.html" class="btn btn-comprar">Ver producto</a>
+                    </div>
+                </li>
+                <li class="carousel-item">
+                    <img src="multimedia/banner-tv-pc.webp" class="hero-img" alt="Smart TV 55 pulgadas 4K en un living moderno">
+                    <div class="carousel-caption">
+                        <p class="hero-kicker">TV &amp; Audio</p>
+                        <h2 class="hero-title">Smart TV 55"&nbsp;4K</h2>
+                        <p class="hero-price">$ 14.900</p>
+                        <a href="secciones/proximamente.html" class="btn btn-comprar">Ver producto</a>
+                    </div>
+                </li>
+                <li class="carousel-item">
+                    <img src="multimedia/banner-aire-pc.webp" class="hero-img" alt="Mujer relajada en un living con aire acondicionado encendido">
+                    <div class="carousel-caption">
+                        <p class="hero-kicker">Climatización</p>
+                        <h2 class="hero-title">Aire acondicionado inverter</h2>
+                        <p class="hero-price">$ 22.500</p>
+                        <a href="secciones/proximamente.html" class="btn btn-comprar">Ver producto</a>
+                    </div>
+                </li>
+            </ul>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#inicio" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#inicio" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </section>
+
+        <!-- Barra envíos / cuotas: ahora como franja separadora entre el banner y Categorías. -->
+        <div class="topbar">
+            <p><i class="bi bi-truck"></i> Envíos a todo el país &middot; Cuotas sin recargo</p>
+        </div>
+
+        <!-- 02 CATEGORÍAS — grid uniforme (recorte y proporción iguales) -->
+        <section id="categorias">
+            <div class="container">
+                <h2>Categorías</h2>
+                <p>Encontrá lo que buscás sin perderte de nada.</p>
+
+                <ul class="row list-unstyled g-3">
+                    <li class="col-6 col-md-4 col-lg-2">
+                        <a href="secciones/producto.html" class="tarjeta-cat">
+                            <figure class="ph-cat">
+                                <picture>
+                                    <source media="(min-width: 992px)" srcset="multimedia/categoria-heladera-pc.webp">
+                                    <source media="(min-width: 768px)" srcset="multimedia/categoria-heladera-tablet.webp">
+                                    <img src="multimedia/categoria-heladera-mobile.webp" alt="Heladeras" loading="lazy">
+                                </picture>
+                            </figure>
+                            <span>Heladeras</span>
+                        </a>
+                    </li>
+                    <li class="col-6 col-md-4 col-lg-2">
+                        <a href="secciones/proximamente.html" class="tarjeta-cat">
+                            <figure class="ph-cat">
+                                <picture>
+                                    <source media="(min-width: 992px)" srcset="multimedia/categoria-lavarropas-pc.webp">
+                                    <source media="(min-width: 768px)" srcset="multimedia/categoria-lavarropas-tablet.webp">
+                                    <img src="multimedia/categoria-lavarropas-mobile.webp" alt="Lavarropas" loading="lazy">
+                                </picture>
+                            </figure>
+                            <span>Lavarropas</span>
+                        </a>
+                    </li>
+                    <li class="col-6 col-md-4 col-lg-2">
+                        <a href="secciones/proximamente.html" class="tarjeta-cat">
+                            <figure class="ph-cat">
+                                <picture>
+                                    <source media="(min-width: 992px)" srcset="multimedia/categoria-cocina-pc.webp">
+                                    <source media="(min-width: 768px)" srcset="multimedia/categoria-cocina-tablet.webp">
+                                    <img src="multimedia/categoria-cocina-mobile.webp" alt="Cocinas" loading="lazy">
+                                </picture>
+                            </figure>
+                            <span>Cocinas</span>
+                        </a>
+                    </li>
+                    <li class="col-6 col-md-4 col-lg-2">
+                        <a href="secciones/proximamente.html" class="tarjeta-cat">
+                            <figure class="ph-cat">
+                                <picture>
+                                    <source media="(min-width: 992px)" srcset="multimedia/categoria-tvyaudio-pc.webp">
+                                    <source media="(min-width: 768px)" srcset="multimedia/categoria-tvyaudio-tablet.webp">
+                                    <img src="multimedia/categoria-tvyaudio-mobile.webp" alt="TV & Audio" loading="lazy">
+                                </picture>
+                            </figure>
+                            <span>TV &amp; Audio</span>
+                        </a>
+                    </li>
+                    <li class="col-6 col-md-4 col-lg-2">
+                        <a href="secciones/proximamente.html" class="tarjeta-cat">
+                            <figure class="ph-cat">
+                                <picture>
+                                    <source media="(min-width: 992px)" srcset="multimedia/categoria-celular-pc.webp">
+                                    <source media="(min-width: 768px)" srcset="multimedia/categoria-celular-tablet.webp">
+                                    <img src="multimedia/categoria-celular-mobile.webp" alt="Celulares" loading="lazy">
+                                </picture>
+                            </figure>
+                            <span>Celulares</span>
+                        </a>
+                    </li>
+                    <li class="col-6 col-md-4 col-lg-2">
+                        <a href="secciones/proximamente.html" class="tarjeta-cat">
+                            <figure class="ph-cat">
+                                <picture>
+                                    <source media="(min-width: 992px)" srcset="multimedia/categoria-climatizacion-pc.webp">
+                                    <source media="(min-width: 768px)" srcset="multimedia/categoria-climatizacion-tablet.webp">
+                                    <img src="multimedia/categoria-climatizacion-mobile.webp" alt="Climatización" loading="lazy">
+                                </picture>
+                            </figure>
+                            <span>Climatización</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 04 DESTACADOS — cards de producto con precio, badge y CTA único -->
+        <section id="destacados">
+            <div class="container">
+                <h2>Productos destacados</h2>
+                <p>Los más elegidos a un precio justo.</p>
+
+                <ul class="row list-unstyled g-4">
+                    <li class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100">
+                        <figure class="ph-prod">
+                            <picture>
+                                <source media="(min-width: 992px)" srcset="multimedia/productosdestacados-smart-pc.webp">
+                                <source media="(min-width: 768px)" srcset="multimedia/productosdestacados-smart-tablet.webp">
+                                <img src="multimedia/productosdestacados-smart-mobile.webp" alt="Smart TV 55 pulgadas 4K" loading="lazy">
+                            </picture>
+                            <span class="badge-oferta">-20%</span>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Smart TV 55" 4K</h3>
+                            <p class="card-precio">$ 14.900</p>
+                            <div class="card-rating" role="img" aria-label="Calificación 4.5 de 5">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                            </div>
+                            <a href="secciones/proximamente.html" class="btn btn-comprar w-100">Agregar al carrito</a>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100">
+                        <figure class="ph-prod">
+                            <picture>
+                                <source media="(min-width: 992px)" srcset="multimedia/productosdestacados-heladera-pc.webp">
+                                <source media="(min-width: 768px)" srcset="multimedia/productosdestacados-heladera-tablet.webp">
+                                <img src="multimedia/productosdestacados-heladera-mobile.webp" alt="Heladera No Frost 300L" loading="lazy">
+                            </picture>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Heladera No Frost 300L</h3>
+                            <p class="card-precio">$ 28.500</p>
+                            <div class="card-rating" role="img" aria-label="Calificación 5 de 5">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                            </div>
+                            <a href="secciones/producto.html" class="btn btn-comprar w-100">Agregar al carrito</a>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100">
+                        <figure class="ph-prod">
+                            <picture>
+                                <source media="(min-width: 992px)" srcset="multimedia/productosdestacados-lavarropas-pc.webp">
+                                <source media="(min-width: 768px)" srcset="multimedia/productosdestacados-lavarropas-tablet.webp">
+                                <img src="multimedia/productosdestacados-lavarropas-mobile.webp" alt="Lavarropas automático 8kg" loading="lazy">
+                            </picture>
+                            <span class="badge-oferta">Últimas u.</span>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Lavarropas automático 8kg</h3>
+                            <p class="card-precio">$ 19.990</p>
+                            <div class="card-rating" role="img" aria-label="Calificación 4 de 5">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                            </div>
+                            <a href="secciones/proximamente.html" class="btn btn-comprar w-100">Agregar al carrito</a>
+                        </div>
+                        </div>
+                    </li>
+                    <li class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100">
+                        <figure class="ph-prod">
+                            <picture>
+                                <source media="(min-width: 992px)" srcset="multimedia/productosdestacados-desumificador-pc.webp">
+                                <source media="(min-width: 768px)" srcset="multimedia/productosdestacados-desumificador-tablet.webp">
+                                <img src="multimedia/productosdestacados-desumificador-mobile.webp" alt="Deshumidificador TEM 12L" loading="lazy">
+                            </picture>
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title">Deshumidificador TEM 12L</h3>
+                            <p class="card-precio">$ 4.790</p>
+                            <div class="card-rating" role="img" aria-label="Calificación 4.5 de 5">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                            </div>
+                            <a href="secciones/proximamente.html" class="btn btn-comprar w-100">Agregar al carrito</a>
+                        </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 03b LIQUIDACIÓN — banner rojo + cards chicas -->
+        <section id="liquidacion">
+            <div class="liquidacion-banner">
+                <div class="marquee">
+                    <div class="marquee-track">
+                        <!-- Mitad 1 -->
+                        <span class="mq-item"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <!-- Mitad 2 (idéntica) -->
+                        <span class="mq-item" aria-hidden="true"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item" aria-hidden="true"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item" aria-hidden="true"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item" aria-hidden="true"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item" aria-hidden="true"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item" aria-hidden="true"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item" aria-hidden="true"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                        <span class="mq-item" aria-hidden="true"><i class="bi bi-fire"></i> Liquidación · Últimas unidades</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ul class="row list-unstyled g-3">
+                    <li class="col-6 col-md-3">
+                        <a href="secciones/lavarropas.html" class="card-liq">
+                            <span class="badge-oferta">-20%</span>
+                            <figure class="ph-liq"><img src="multimedia/productosdestacados-lavarropas-mobile.webp" alt="Lavarropas automático 8kg" loading="lazy"></figure>
+                            <h3>Lavarropas automático 8kg</h3>
+                            <p class="liq-precio-ant">$ 24.990</p>
+                            <p class="liq-precio">$ 19.990</p>
+                        </a>
+                    </li>
+                    <li class="col-6 col-md-3">
+                        <a href="secciones/proximamente.html" class="card-liq">
+                            <span class="badge-oferta">-25%</span>
+                            <figure class="ph-liq"><img src="multimedia/categoria-cocina-mobile.webp" alt="Cocina 4 hornallas" loading="lazy"></figure>
+                            <h3>Cocina 4 hornallas</h3>
+                            <p class="liq-precio-ant">$ 21.990</p>
+                            <p class="liq-precio">$ 16.490</p>
+                        </a>
+                    </li>
+                    <li class="col-6 col-md-3">
+                        <a href="secciones/proximamente.html" class="card-liq">
+                            <span class="badge-oferta">-30%</span>
+                            <figure class="ph-liq"><img src="multimedia/categoria-celular-mobile.webp" alt="Celular 128GB" loading="lazy"></figure>
+                            <h3>Celular 128GB</h3>
+                            <p class="liq-precio-ant">$ 15.990</p>
+                            <p class="liq-precio">$ 11.190</p>
+                        </a>
+                    </li>
+                    <li class="col-6 col-md-3">
+                        <a href="secciones/proximamente.html" class="card-liq">
+                            <span class="badge-oferta">-15%</span>
+                            <figure class="ph-liq"><img src="multimedia/categoria-climatizacion-mobile.webp" alt="Aire acondicionado" loading="lazy"></figure>
+                            <h3>Aire acondicionado</h3>
+                            <p class="liq-precio-ant">$ 26.990</p>
+                            <p class="liq-precio">$ 22.940</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 04 BENEFICIOS — franja de confianza (envíos, cuotas, garantía) -->
+        <section id="beneficios">
+            <div class="container">
+                <ul class="row list-unstyled beneficios-grid text-center">
+                    <li class="col-12 col-md-4">
+                        <i class="bi bi-truck"></i>
+                        <h3>Envíos a todo el país</h3>
+                        <p>Recibí tu compra en la puerta de tu casa.</p>
+                    </li>
+                    <li class="col-12 col-md-4">
+                        <i class="bi bi-credit-card-2-front"></i>
+                        <h3>Cuotas sin recargo</h3>
+                        <p>Financiá con todas las tarjetas.</p>
+                    </li>
+                    <li class="col-12 col-md-4">
+                        <i class="bi bi-shield-check"></i>
+                        <h3>Garantía oficial</h3>
+                        <p>Todos los productos con garantía del fabricante.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 05 VIDEO — multimedia promocional -->
+        <section id="video">
+            <div class="container">
+                <h2>Conocé Magic Center</h2>
+                <p>Mirá cómo elegimos los mejores electrodomésticos para vos.</p>
+
+                <div class="reproductor-video">
+                    <video controls preload="metadata" playsinline
+                        title="Video institucional Magic Center">
+                        <source src="multimedia/conoce-magic-center.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de video.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 FAQ — accordion + newsletter -->
+        <section id="faq">
+            <div class="container">
+                <h2>Preguntas frecuentes</h2>
+                <p>Las dudas más comunes sobre compras, envíos y garantía.</p>
+
+                <ul class="accordion list-unstyled" id="faqAccordion">
+                    <li class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                ¿Hacen envíos a todo el país?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sí. Enviamos a todo el país. El costo y el plazo se calculan al finalizar la compra según tu localidad.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                ¿En qué moneda están los precios?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Todos los precios del sitio están expresados en una única moneda para que puedas comparar sin confusiones.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                ¿Puedo pagar en cuotas?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sí, ofrecemos cuotas sin recargo con las principales tarjetas de crédito.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                ¿Qué significa el badge "Recibilo hoy"?
+                            </button>
+                        </h3>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Indica que el producto tiene stock en sucursal y puede despacharse el mismo día en tu zona.
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <!-- Newsletter: mismo patrón del TP2 (Formspree + alert JS) -->
+                <div class="newsletter-cta">
+                    <p>¿Querés recibir nuestras ofertas antes que nadie?</p>
+                    <div id="liveAlertPlaceholder"></div>
+                    <form id="newsletterForm" class="newsletter-form" action="https://formspree.io/f/xaqzwgbo" method="POST">
+                        <label for="newsletterEmail" class="visually-hidden">Correo electrónico</label>
+                        <input type="email" name="email" id="newsletterEmail" class="newsletter-input" placeholder="tu@email.com" required>
+                        <button id="liveAlertBtn" type="submit" class="btn btn-comprar">Suscribirme</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 CONTACTO -->
+        <section id="contacto">
+            <div class="container">
+                <h2>Contactanos</h2>
+                <p>¿Tenés una consulta sobre un producto o tu pedido?</p>
+                <ul class="row list-unstyled contacto-grid">
+                    <li class="col-12 col-md-4"><a href="https://wa.me/099123456" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> WhatsApp: 099 123 456</a></li>
+                    <li class="col-12 col-md-4"><a href="mailto:ventas@magiccenter.com"><i class="bi bi-envelope"></i> ventas@magiccenter.com</a></li>
+                    <li class="col-12 col-md-4"><a href="https://www.google.com/maps/search/?api=1&amp;query=Magic+Center" target="_blank" rel="noopener"><i class="bi bi-geo-alt"></i> Sucursales en todo el país</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <ul class="list-unstyled redes">
+                <li><a href="https://instagram.com/" aria-label="Instagram"><i class="bi bi-instagram"></i></a></li>
+                <li><a href="https://facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="https://wa.me/" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></li>
+                <li><a href="https://youtube.com/" aria-label="YouTube"><i class="bi bi-youtube"></i></a></li>
+            </ul>
+            <p class="footer-alumnos">Adrian Delgado &middot; Cynthia Rivero</p>
+            <p class="footer-carrera">DGM5AV</p>
+            <p>&copy; 2026 Magic Center. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/" class="whatsapp-float" aria-label="Escribinos por WhatsApp"><i class="bi bi-whatsapp"></i></a>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Newsletter: inserta un alert dismissible al enviar el form (patrón Bootstrap). -->
+    <script>
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+        const appendAlert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>',
+                '</div>'
+            ].join('')
+            alertPlaceholder.append(wrapper)
+        }
+
+        const newsletterForm = document.getElementById('newsletterForm')
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', async (e) => {
+                e.preventDefault()
+                alertPlaceholder.innerHTML = ''
+                try {
+                    const respuesta = await fetch(newsletterForm.action, {
+                        method: 'POST',
+                        body: new FormData(newsletterForm),
+                        headers: { 'Accept': 'application/json' }
+                    })
+                    if (respuesta.ok) {
+                        appendAlert('¡Gracias por suscribirte! Pronto vas a recibir nuestras ofertas.', 'success')
+                        newsletterForm.reset()
+                    } else {
+                        appendAlert('Hubo un problema al enviar tu correo. Probá de nuevo en un rato.', 'danger')
+                    }
+                } catch (error) {
+                    appendAlert('No se pudo conectar. Revisá tu conexión e intentá de nuevo.', 'danger')
+                }
+            })
+        }
+    </script>
+
+    <!-- ScrollSpy: marca el nav-link activo según la sección visible. -->
+    <script>
+        new bootstrap.ScrollSpy(document.body, {
+            target: '#menuPrincipal',
+            rootMargin: '-120px 0px -40% 0px'
+        })
+    </script>
+
+    <!-- Fade-in de secciones al scrollear (solo PC). -->
+    <script>
+        if (window.matchMedia('(min-width: 1024px)').matches) {
+            const sections = document.querySelectorAll('main > section:not(:first-of-type)')
+            sections.forEach(s => s.classList.add('fade-in-pending'))
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible')
+                        fadeObserver.unobserve(entry.target)
+                    }
+                })
+            }, { threshold: 0, rootMargin: '0px 0px -120px 0px' })
+            sections.forEach(s => fadeObserver.observe(s))
+        }
+    </script>
+</body>
+</html>

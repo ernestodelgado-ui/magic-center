@@ -1,0 +1,7 @@
+# Config local del editor / asistente
+.claude/
+
+# Sistema
+Thumbs.db
+.DS_Store
+desktop.ini
