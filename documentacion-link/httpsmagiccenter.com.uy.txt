@@ -1,3 +1,11 @@
+Pagina seleccionada
+
 https://magiccenter.com.uy/
 
-pagina web seleccionada
+GitHub
+
+https://github.com/ernestodelgado-ui/magic-center
+
+Vercel
+
+https://magic-center.vercel.app/
